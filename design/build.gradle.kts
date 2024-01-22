@@ -28,7 +28,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
-    namespace = "com.jj.templateproject.design"
+    namespace = "com.jj.clickerproject.design"
 }
 
 dependencies {

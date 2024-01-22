@@ -22,5 +22,5 @@ android {
         }
     }
 
-    namespace = "com.jj.templateproject.domain"
+    namespace = "com.jj.clickerproject.domain"
 }

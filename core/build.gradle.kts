@@ -21,7 +21,7 @@ android {
             it.useJUnitPlatform()
         }
     }
-    namespace = "com.jj.templateproject.core"
+    namespace = "com.jj.clickerproject.core"
 }
 
 dependencies {

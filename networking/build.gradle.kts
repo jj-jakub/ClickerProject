@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jj.templateproject.networking"
+    namespace = "com.jj.clickerproject.networking"
     compileSdk = 34
     defaultConfig {
         minSdk = 23

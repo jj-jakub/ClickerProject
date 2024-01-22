@@ -13,7 +13,7 @@ plugins {
 
 sonar {
     properties {
-        property("sonar.projectKey", "jj-jakub_TemplateProject")
+        property("sonar.projectKey", "jj-jakub_ClickerProject")
         property("sonar.organization", "jj-jakub")
         property("sonar.host.url", "https://sonarcloud.io")
     }
@@ -43,7 +43,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.jj.templateproject"
+        applicationId = "com.jj.clickerproject"
         minSdk = 23
         targetSdk = 34
         versionCode = 1
@@ -57,7 +57,7 @@ android {
     signingConfigs {
         create("release") {
             val keystoreFile =
-                file(System.getProperty("user.home") + "/work/_temp/keystore/TemplateProject.jks")
+                file(System.getProperty("user.home") + "/work/_temp/keystore/ClickerProject.jks")
             storeFile = file(keystoreFile.path)
             storePassword = System.getenv("SIGNING_STORE_PASSWORD")
             keyAlias = System.getenv("SIGNING_KEY_ALIAS")
@@ -140,7 +140,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
-    namespace = "com.jj.templateproject"
+    namespace = "com.jj.clickerproject"
 }
 
 dependencies {

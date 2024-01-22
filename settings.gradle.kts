@@ -1,4 +1,4 @@
-rootProject.name = "TemplateProject"
+rootProject.name = "ClickerProject"
 pluginManagement {
     repositories {
         google()

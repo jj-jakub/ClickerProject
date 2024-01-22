@@ -1,15 +1,15 @@
 {
   "project_info": {
     "project_number": "401820822299",
-    "project_id": "templateproject-74ebb",
-    "storage_bucket": "templateproject-74ebb.appspot.com"
+    "project_id": "clickerproject-74ebb",
+    "storage_bucket": "clickerproject-74ebb.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:401820822299:android:572b6ac5896262e2eb81be",
         "android_client_info": {
-          "package_name": "com.jj.templateproject"
+          "package_name": "com.jj.clickerproject"
         }
       },
       "oauth_client": [
@@ -38,7 +38,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:401820822299:android:ae5ede525c835e73eb81be",
         "android_client_info": {
-          "package_name": "com.jj.templateproject.debug"
+          "package_name": "com.jj.clickerproject.debug"
         }
       },
       "oauth_client": [
@@ -67,7 +67,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:401820822299:android:ac0abf391d0daca2eb81be",
         "android_client_info": {
-          "package_name": "com.jj.templateproject.fl1"
+          "package_name": "com.jj.clickerproject.fl1"
         }
       },
       "oauth_client": [
@@ -96,7 +96,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:401820822299:android:a4f53f22333de0b2eb81be",
         "android_client_info": {
-          "package_name": "com.jj.templateproject.fl1.debug"
+          "package_name": "com.jj.clickerproject.fl1.debug"
         }
       },
       "oauth_client": [
@@ -125,7 +125,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:401820822299:android:daa0dda30d4bbe7eeb81be",
         "android_client_info": {
-          "package_name": "com.jj.templateproject.fl2"
+          "package_name": "com.jj.clickerproject.fl2"
         }
       },
       "oauth_client": [
@@ -154,7 +154,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:401820822299:android:f8472bc7e5b70994eb81be",
         "android_client_info": {
-          "package_name": "com.jj.templateproject.fl2.debug"
+          "package_name": "com.jj.clickerproject.fl2.debug"
         }
       },
       "oauth_client": [
