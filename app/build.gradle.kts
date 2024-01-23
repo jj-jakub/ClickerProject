@@ -8,15 +8,6 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     id("kotlin-kapt")
-    id("org.sonarqube") version "4.2.1.3168"
-}
-
-sonar {
-    properties {
-        property("sonar.projectKey", "jj-jakub_ClickerProject")
-        property("sonar.organization", "jj-jakub")
-        property("sonar.host.url", "https://sonarcloud.io")
-    }
 }
 
 fun getCurrentRevisionHash(): String {
