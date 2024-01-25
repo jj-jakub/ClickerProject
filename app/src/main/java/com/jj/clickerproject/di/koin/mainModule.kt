@@ -16,11 +16,12 @@ import com.jj.clickerproject.domain.ad.AdManager
 import com.jj.clickerproject.domain.app.AppInfoRepository
 import com.jj.clickerproject.domain.click.AccessibilityClickRepository
 import com.jj.clickerproject.domain.click.ClickManager
-import com.jj.clickerproject.domain.click.usecase.PerformClickLoop
+import com.jj.clickerproject.domain.click.RunClickSequenceManager
 import com.jj.clickerproject.domain.click.usecase.state.IsAccessibilityAvailable
 import com.jj.clickerproject.domain.click.usecase.state.ObserveAccessibilityClickAvailability
 import com.jj.clickerproject.domain.click.usecase.state.SetAccessibilityClickAvailability
 import com.jj.clickerproject.presentation.MainRootViewModel
+import com.jj.clickerproject.presentation.activities.MainActivityViewModel
 import com.jj.clickerproject.presentation.ui.main.MainScreenViewModel
 import com.jj.clickerproject.presentation.ui.secondary.SecondaryScreenViewModel
 import org.koin.android.ext.koin.androidApplication
@@ -55,8 +56,12 @@ val mainModule = module {
     viewModel {
         MainRootViewModel(
             clickManager = get(),
-            observeAccessibilityClickAvailability = get(),
-            performClickLoop = get(),
+        )
+    }
+    viewModel {
+        MainActivityViewModel(
+            accessibilityClickRepository = get(),
+            runClickSequenceManager = get(),
         )
     }
     viewModel {
@@ -73,8 +78,8 @@ val mainModule = module {
         )
     }
     single<AccessibilityClickRepository> { DefaultAccessibilityClickRepository() }
-    single<PerformClickLoop> {
-        PerformClickLoop(
+    single<RunClickSequenceManager> {
+        RunClickSequenceManager(
             clickRepository = get(),
             clickManager = get(),
         )

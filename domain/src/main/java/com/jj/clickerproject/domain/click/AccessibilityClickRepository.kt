@@ -6,5 +6,7 @@ import kotlinx.coroutines.flow.StateFlow
 interface AccessibilityClickRepository {
     fun observeAccessibilityClickAvailability(): StateFlow<Boolean>
     fun setAccessibilityClickAvailability(isAvailable: Boolean)
+    fun observeClickSequenceRunning(): StateFlow<Boolean>
+    fun setClickSequenceRunning(isRunning: Boolean)
     fun getDefaultClickSequence(): ClickSequence
 }

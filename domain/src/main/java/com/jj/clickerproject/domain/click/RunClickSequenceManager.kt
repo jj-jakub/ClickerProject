@@ -1,7 +1,5 @@
-package com.jj.clickerproject.domain.click.usecase
+package com.jj.clickerproject.domain.click
 
-import com.jj.clickerproject.domain.click.AccessibilityClickRepository
-import com.jj.clickerproject.domain.click.ClickManager
 import com.jj.clickerproject.domain.click.model.ClickSequenceEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -9,14 +7,16 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class PerformClickLoop(
+class RunClickSequenceManager(
     private val clickRepository: AccessibilityClickRepository,
     private val clickManager: ClickManager,
 ) {
 
     private var clickJob: Job? = null
 
-    operator fun invoke() {
+    fun start() {
+        if (!clickRepository.observeAccessibilityClickAvailability().value) return
+        clickRepository.setClickSequenceRunning(true)
         clickJob?.cancel()
         clickJob = CoroutineScope(Dispatchers.Default).launch {
             val sequence = clickRepository.getDefaultClickSequence()
@@ -28,6 +28,12 @@ class PerformClickLoop(
                     }
                 }
             }
+            clickRepository.setClickSequenceRunning(false)
         }
+    }
+
+    fun stop() {
+        clickJob?.cancel()
+        clickRepository.setClickSequenceRunning(false)
     }
 }
