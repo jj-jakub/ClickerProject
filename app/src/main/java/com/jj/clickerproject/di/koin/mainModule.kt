@@ -16,9 +16,10 @@ import com.jj.clickerproject.domain.ad.AdManager
 import com.jj.clickerproject.domain.app.AppInfoRepository
 import com.jj.clickerproject.domain.click.AccessibilityClickRepository
 import com.jj.clickerproject.domain.click.ClickManager
-import com.jj.clickerproject.domain.click.IsAccessibilityAvailable
-import com.jj.clickerproject.domain.click.ObserveAccessibilityClickAvailability
-import com.jj.clickerproject.domain.click.SetAccessibilityClickAvailability
+import com.jj.clickerproject.domain.click.usecase.PerformClickLoop
+import com.jj.clickerproject.domain.click.usecase.state.IsAccessibilityAvailable
+import com.jj.clickerproject.domain.click.usecase.state.ObserveAccessibilityClickAvailability
+import com.jj.clickerproject.domain.click.usecase.state.SetAccessibilityClickAvailability
 import com.jj.clickerproject.presentation.MainRootViewModel
 import com.jj.clickerproject.presentation.ui.main.MainScreenViewModel
 import com.jj.clickerproject.presentation.ui.secondary.SecondaryScreenViewModel
@@ -54,6 +55,8 @@ val mainModule = module {
     viewModel {
         MainRootViewModel(
             clickManager = get(),
+            observeAccessibilityClickAvailability = get(),
+            performClickLoop = get(),
         )
     }
     viewModel {
@@ -70,7 +73,12 @@ val mainModule = module {
         )
     }
     single<AccessibilityClickRepository> { DefaultAccessibilityClickRepository() }
-
+    single<PerformClickLoop> {
+        PerformClickLoop(
+            clickRepository = get(),
+            clickManager = get(),
+        )
+    }
     single<AdManager> {
         DefaultAdManager(
             context = androidContext(),

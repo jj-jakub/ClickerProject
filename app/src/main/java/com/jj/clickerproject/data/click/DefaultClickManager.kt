@@ -4,10 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.provider.Settings
 import com.jj.clickerproject.domain.click.ClickManager
-import com.jj.clickerproject.domain.click.IsAccessibilityAvailable
-import com.jj.clickerproject.domain.click.SetAccessibilityClickAvailability
 import com.jj.clickerproject.domain.click.model.ScreenClickEvent
+import com.jj.clickerproject.domain.click.usecase.state.IsAccessibilityAvailable
+import com.jj.clickerproject.domain.click.usecase.state.SetAccessibilityClickAvailability
 import com.jj.clickerproject.framework.accessibility.BACK_CLICK_INTENT_CATEGORY
+import com.jj.clickerproject.framework.accessibility.CLICK_DURATION_PARAM
 import com.jj.clickerproject.framework.accessibility.CLICK_INTENT_CATEGORY
 import com.jj.clickerproject.framework.accessibility.HOME_CLICK_INTENT_CATEGORY
 import com.jj.clickerproject.framework.accessibility.RECENT_APPS_CLICK_INTENT_CATEGORY
@@ -65,6 +66,10 @@ class DefaultClickManager(
                     putExtra(
                         Y_COORDINATE_PARAM,
                         screenClickEvent.yClickCoordinate
+                    )
+                    putExtra(
+                        CLICK_DURATION_PARAM,
+                        screenClickEvent.clickDuration
                     )
                 }
             }

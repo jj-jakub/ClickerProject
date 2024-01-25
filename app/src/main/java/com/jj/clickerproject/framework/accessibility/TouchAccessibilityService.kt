@@ -16,6 +16,7 @@ const val RECENT_APPS_CLICK_INTENT_CATEGORY = "RECENT_APPS_CLICK_INTENT_CATEGORY
 const val STOP_SERVICE_CATEGORY = "STOP_SERVICE_CATEGORY"
 const val X_COORDINATE_PARAM = "X_COORDINATE_PARAM"
 const val Y_COORDINATE_PARAM = "Y_COORDINATE_PARAM"
+const val CLICK_DURATION_PARAM = "CLICK_DURATION_PARAM"
 
 class TouchAccessibilityService : AccessibilityService() {
 
@@ -31,9 +32,11 @@ class TouchAccessibilityService : AccessibilityService() {
             intent.hasCategory(CLICK_INTENT_CATEGORY) -> {
                 val x = intent.getFloatExtra(X_COORDINATE_PARAM, 0F)
                 val y = intent.getFloatExtra(Y_COORDINATE_PARAM, 0F)
+                val duration = intent.getLongExtra(CLICK_DURATION_PARAM, 1L)
                 performClick(
                     x = x,
                     y = y,
+                    duration = duration,
                 )
             }
 
@@ -45,10 +48,10 @@ class TouchAccessibilityService : AccessibilityService() {
         return START_STICKY
     }
 
-    private fun performClick(x: Float, y: Float) {
+    private fun performClick(x: Float, y: Float, duration: Long) {
         val clickPath = Path()
         clickPath.moveTo(x, y)
-        val clickStroke = StrokeDescription(clickPath, 0, 1L)
+        val clickStroke = StrokeDescription(clickPath, 0, duration)
         val clickBuilder = GestureDescription.Builder().addStroke(clickStroke)
         dispatchGesture(clickBuilder.build(), null, null)
     }

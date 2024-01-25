@@ -7,5 +7,6 @@ sealed interface ScreenClickEvent {
     data class Touch(
         val xClickCoordinate: Float,
         val yClickCoordinate: Float,
+        val clickDuration: Long,
     ) : ScreenClickEvent
 }
