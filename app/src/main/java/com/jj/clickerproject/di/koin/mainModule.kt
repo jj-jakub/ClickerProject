@@ -6,12 +6,19 @@ import com.jj.clickerproject.data.ad.GetInterstitialAdUnitId
 import com.jj.clickerproject.data.ad.GetMainAdUnitId
 import com.jj.clickerproject.data.app.DefaultAppInfoRepository
 import com.jj.clickerproject.data.app.GetIsInstalledFromValidSource
+import com.jj.clickerproject.data.click.DefaultAccessibilityClickRepository
+import com.jj.clickerproject.data.click.DefaultClickManager
 import com.jj.clickerproject.data.config.AppConfiguration
 import com.jj.clickerproject.data.config.VersionTextProvider
 import com.jj.clickerproject.data.network.RetrofitFactory
 import com.jj.clickerproject.di.ActivityProvider
 import com.jj.clickerproject.domain.ad.AdManager
 import com.jj.clickerproject.domain.app.AppInfoRepository
+import com.jj.clickerproject.domain.click.AccessibilityClickRepository
+import com.jj.clickerproject.domain.click.ClickManager
+import com.jj.clickerproject.domain.click.IsAccessibilityAvailable
+import com.jj.clickerproject.domain.click.ObserveAccessibilityClickAvailability
+import com.jj.clickerproject.domain.click.SetAccessibilityClickAvailability
 import com.jj.clickerproject.presentation.MainRootViewModel
 import com.jj.clickerproject.presentation.ui.main.MainScreenViewModel
 import com.jj.clickerproject.presentation.ui.secondary.SecondaryScreenViewModel
@@ -46,12 +53,24 @@ val mainModule = module {
     }
     viewModel {
         MainRootViewModel(
-            getMainAdUnitId = get(),
+            clickManager = get(),
         )
     }
     viewModel {
         SecondaryScreenViewModel(savedStateHandle = get())
     }
+    single { IsAccessibilityAvailable(accessibilityClickRepository = get()) }
+    single { ObserveAccessibilityClickAvailability(accessibilityClickRepository = get()) }
+    single { SetAccessibilityClickAvailability(accessibilityClickRepository = get()) }
+    single<ClickManager> {
+        DefaultClickManager(
+            context = androidContext(),
+            isAccessibilityAvailable = get(),
+            setAccessibilityClickAvailability = get(),
+        )
+    }
+    single<AccessibilityClickRepository> { DefaultAccessibilityClickRepository() }
+
     single<AdManager> {
         DefaultAdManager(
             context = androidContext(),

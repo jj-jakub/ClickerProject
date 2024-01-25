@@ -6,7 +6,7 @@ plugins {
 android {
     compileSdk = 34
     defaultConfig {
-        minSdk = 23
+        minSdk = 24
         targetSdk = 34
     }
     compileOptions {
@@ -23,4 +23,9 @@ android {
     }
 
     namespace = "com.jj.clickerproject.domain"
+}
+
+dependencies {
+    implementation(libs.kotlinStdlib)
+    implementation(libs.coroutinesCore)
 }

@@ -26,10 +26,6 @@ fun MainRoot(
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                ComposeAdView(
-                    adUnitId = state.adMainUnitId,
-                    onAdClicked = viewModel::onAdClicked,
-                )
                 MainNavGraph(
                     navController = navController,
                 )
